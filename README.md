@@ -152,6 +152,64 @@ return Card(
   }
 }
 ```
+## 📱 Exemple de Card -> card + arrondi de bas en haut 
+```
+import 'package:flutter/material.dart';
+import '../../models/stop.dart';
+
+class StopWidget extends StatelessWidget {
+  final Stop stop;
+
+  const StopWidget({super.key, required this.stop});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(8),
+      child: Card(
+        elevation: 4,
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  stop.mural.imagePath,
+                  width: 150,
+                  height: 150,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) =>
+                      Icon(Icons.image_not_supported, size: 60),
+                ),
+              ),
+              SizedBox(height: 12),
+              Text(
+                stop.mural.name,
+                style: Theme.of(context).textTheme.headlineSmall,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 8),
+              Text(
+                stop.mural.address,
+                style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 8),
+              IconButton(onPressed: (){}, icon: Icon(Icons.add))
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
 
 ## 📱 Exemple de Card -> card + bouton + image 
 ```dart

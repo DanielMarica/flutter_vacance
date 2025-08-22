@@ -153,7 +153,7 @@ return Card(
 }
 ```
 ## 📱 Exemple de Card -> card + arrondi de bas en haut 
-```
+```dart
 import 'package:flutter/material.dart';
 import '../../models/stop.dart';
 
